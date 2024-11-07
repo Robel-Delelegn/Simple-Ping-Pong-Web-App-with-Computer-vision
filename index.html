@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping Pong Hand Detection Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function startGame() {
+            fetch('/start_game', {method: 'POST'}).then(() => {
+                document.getElementById("start-button").style.display = "none";
+            });
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div style="display: flex; flex-flow:  column; justify-content: center; align-items: center; flex: 1 1 auto">
+        <h1>Ping Pong (CV)</h1>
+        <button id="start-button" class="start-btn" onclick="startGame()">START</button>
+    </div>
+    <div class="video-container" style="flex: 0 0 auto">
+        <img src="{{ url_for('video_feed') }}" alt="Video Feed">
+    </div>
+
+</div>
+</body>
+</html>
+
+
+
